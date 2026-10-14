@@ -1,0 +1,45 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as Stories from './BarChart.stories';
+
+<Meta of={Stories} />
+
+# BarChart
+
+Compara magnitudes entre categorias. Uma única API cobre quatro variantes: `layout` (vertical/horizontal) × `mode` (agrupado/empilhado) × número de séries.
+
+<Canvas of={Stories.Vertical} />
+
+## Quando usar
+
+- **Barras**: comparar valores entre categorias discretas (meses, produtos, regiões).
+- **Linha em vez de barras**: tendência contínua no tempo com muitos pontos. Barras com mais de ~30 categorias viram ruído.
+- **Horizontal**: rótulos longos ou rankings. O nome fica legível sem rotação.
+
+<Canvas of={Stories.Horizontal} />
+
+## Agrupado vs. empilhado
+
+- **Agrupado**: compara as séries entre si dentro de cada categoria.
+- **Empilhado**: mostra a composição e o total. Só o segmento da base é comparável com precisão entre categorias.
+
+<Canvas of={Stories.Agrupado} />
+<Canvas of={Stories.Empilhado} />
+
+## Acessibilidade
+
+- O gráfico é focável. Use **←/→** (ou **↑/↓** no horizontal) para navegar pelas categorias, **Home/End** para ir às extremidades e **Esc** para limpar a seleção. Cada categoria é anunciada por leitor de tela.
+- **Ver tabela** mostra os mesmos dados numa `<table>` semântica.
+- A identidade das séries nunca depende só da cor: legenda, tooltip e tabela trazem os nomes.
+
+## Faça / Não faça
+
+| Faça | Não faça |
+|------|----------|
+| Mantenha a ordem de `series` estável para as cores não mudarem | Reordenar séries entre gráficos do mesmo dashboard |
+| Agrupe o excedente em "Outros" a partir da 8ª série | Passar mais de 8 séries (o excedente é descartado) |
+| Use `valueFormat` para moeda e unidades | Truncar o eixo: ele sempre começa em 0 |
+| Deixe o destaque só no maior valor | Pôr número em cada barra |
+
+## Props
+
+<ArgTypes of={Stories} />
