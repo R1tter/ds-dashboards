@@ -131,6 +131,7 @@ export function BarChart<T extends Record<string, unknown>>({
     else if (e.key === 'Escape') target = null;
     else return;
     e.preventDefault();
+    setFocused(true);
     setActive(target);
   };
 
@@ -202,7 +203,9 @@ export function BarChart<T extends Record<string, unknown>>({
           aria-labelledby={description ? `${titleId} ${descId}` : titleId}
           tabIndex={0}
           onKeyDown={onKeyDown}
-          onFocus={() => {
+          onFocus={(e) => {
+            // Foco por clique não ativa o modo teclado; senão o tooltip ficaria preso após o mouse sair.
+            if (!e.currentTarget.matches(':focus-visible')) return;
             setFocused(true);
             setActive((a) => a ?? 0);
           }}

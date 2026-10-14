@@ -80,11 +80,19 @@
   position: relative;
 }
 
-/* O foco é mostrado pelo .focusRing na categoria ativa. */
+/* O .focusRing marca a categoria ativa; o outline garante foco visível sem categoria ativa. */
 .svg {
   display: block;
-  outline: none;
   font-family: var(--font-sans);
+}
+
+.svg:focus {
+  outline: none;
+}
+
+.svg:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
 }
 
 .svg text {
