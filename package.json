@@ -1,0 +1,27 @@
+{
+  "name": "ds-dashboards",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "d3-scale": "^4.0.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^9.1.21",
+    "@storybook/react-vite": "^9.1.21",
+    "@types/d3-scale": "^4.0.9",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "storybook": "^9.1.21",
+    "typescript": "~5.9",
+    "vite": "^7.3.7"
+  }
+}

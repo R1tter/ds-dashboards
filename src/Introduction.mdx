@@ -1,0 +1,20 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introdução" />
+
+# Design System — Dashboards
+
+Componentes de visualização de dados para dashboards. Todos os estilos vêm dos tokens em `src/tokens/tokens.css`. Use **Tema** na toolbar para alternar entre light e dark.
+
+## Paleta categórica
+
+As séries recebem cores nesta ordem fixa. A ordem é o que garante distinção para daltonismo entre séries vizinhas, por isso não reordene nem gere cores novas.
+
+<div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+    <div key={n} style={{ textAlign: 'center', fontSize: 12 }}>
+      <div style={{ width: 48, height: 48, borderRadius: 8, background: `var(--series-${n})` }} />
+      <code>--series-{n}</code>
+    </div>
+  ))}
+</div>
