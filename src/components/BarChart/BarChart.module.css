@@ -1,0 +1,277 @@
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--surface-chart);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.description {
+  margin: var(--space-1) 0 0;
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+}
+
+.toggle {
+  flex-shrink: 0;
+  padding: var(--space-1) var(--space-3);
+  font: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.toggle:hover {
+  color: var(--text-primary);
+  background: var(--surface-hover);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.swatch {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.body {
+  position: relative;
+}
+
+/* O foco é mostrado pelo .focusRing na categoria ativa. */
+.svg {
+  display: block;
+  outline: none;
+  font-family: var(--font-sans);
+}
+
+.svg text {
+  fill: var(--text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.svg .maxLabel {
+  fill: var(--text-primary);
+  font-weight: 600;
+}
+
+.tickLabel {
+  font-variant-numeric: tabular-nums;
+}
+
+.grid {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+
+.baseline {
+  stroke: var(--axis);
+  stroke-width: 1;
+}
+
+.highlight {
+  fill: var(--surface-hover);
+}
+
+.focusRing {
+  fill: none;
+  stroke: var(--focus-ring);
+  stroke-width: 2;
+}
+
+.hit {
+  fill: transparent;
+}
+
+.growY,
+.growX {
+  transform-box: fill-box;
+  animation-duration: 400ms;
+  animation-timing-function: ease-out;
+}
+
+.growY {
+  transform-origin: bottom;
+  animation-name: growY;
+}
+
+.growX {
+  transform-origin: left;
+  animation-name: growX;
+}
+
+@keyframes growY {
+  from { transform: scaleY(0); }
+}
+
+@keyframes growX {
+  from { transform: scaleX(0); }
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 1;
+  min-width: 140px;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+  background: var(--surface-chart);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.12);
+  pointer-events: none;
+}
+
+.tooltipTitle {
+  margin-bottom: var(--space-1);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tooltipRows {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tooltipRows li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+}
+
+.tooltipValue {
+  margin-left: auto;
+  padding-left: var(--space-4);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.tooltipRows .tooltipTotal {
+  padding-top: var(--space-1);
+  border-top: 1px solid var(--grid);
+  font-weight: 600;
+}
+
+.skeleton {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-3);
+  box-sizing: border-box;
+  padding: var(--space-4) 0;
+}
+
+.skeleton span {
+  flex: 1;
+  max-width: 24px;
+  margin: 0 auto;
+  background: var(--skeleton);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: 0.5; }
+}
+
+.empty {
+  display: grid;
+  place-items: center;
+  font-size: var(--font-size-md);
+  color: var(--text-muted);
+}
+
+.tableWrap {
+  overflow: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-md);
+}
+
+.table th,
+.table td {
+  padding: var(--space-2) var(--space-3);
+  text-align: right;
+  border-bottom: 1px solid var(--grid);
+}
+
+.table thead th {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.table th[scope="row"],
+.table thead th:first-child {
+  text-align: left;
+}
+
+.table td {
+  font-variant-numeric: tabular-nums;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .growY,
+  .growX,
+  .skeleton span {
+    animation: none;
+  }
+}
